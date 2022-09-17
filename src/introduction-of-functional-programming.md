@@ -1,0 +1,142 @@
+---
+marp: true
+title: 関数型超入門
+theme: default
+---
+
+# 関数型プログラミング超入門
+Shigeki Shoji 
+[@takesection](https://twitter.com/takesection)
+2022-09-14
+
+---
+
+## ゴール
+
+- Functional Programming (関数型プログラミング) の土台となるコンセプトを理解する
+
+---
+
+## 目次
+
+- Referential Transparency (参照透過性)
+- Immutable (不変性)
+- Side Effect (副作用)
+- Higher-order Function (高階関数)
+- Map、Filter、Reduce
+
+---
+
+## Referential Transparency (参照透過性)
+
+参照透過性とは、「プログラムの構成要素が同じもの同士は等しい」ということです。
+
+例えば:
+- 1 と 1 は等しい
+- 文字列 abc と文字列 abc は等しい
+- 関数 f(1) と 関数 f(1) は等しい
+
+つまり、変数 a と b に同じ値 (1 や abc や f(1)) を代入しているなら、a と b は等しいということになります。
+
+---
+
+## 参照透過性の利点 (An advantage of referential transparency)
+
+参照透過性の利点は、数学的推論が利用できることです。f(1) の計算結果は常に f(1) の計算結果と等しいため、その時の状況によって結果が変わらないため、テストが容易になります。
+
+---
+
+## Immutable (不変性)
+
+構造化/手続き型/ 命令型プログラミングでは、次の例のように、変数をミュータブルに使用するのが一般的です。
+
+```java
+int sum = 0;
+for (int x: list) sum = sum + x;
+```
+
+変数 sum、x の値はプログラムの実行中に値を変化させます。これは、参照透過性の破壊を意味します。
+
+関数型プログラミングでは、イミュータブルな変数を利用することが一般的です。
+
+---
+
+## Side Effect (副作用) 
+
+関数がファイルやデータベース、ネットワーク等外部との入出力に依存している場合、外部環境の変化により関数の結果が変化することがあります。このような作用を「副作用」と呼びます。副作用もまた参照透過性の破壊に繋がります。
+
+この副作用を伴わずに参照透過性を持つ関数を「純粋な関数」と呼びます。
+
+関数型プログラミングで、副作用を伴う関数を定義する場合、副作用を特定の関数内に隔離することがベストプラクティスになります。
+
+---
+
+## Higher-order Function (高階関数)
+
+高階関数とは、簡単にいうと引数に関数を、あるいは関数を返す関数です。
+
+次の例は、Javaによる高階関数を定義する例です。Optional.map() は引数が関数 (Function) です。関数には、次のようにラムダ関数も使用できます:
+
+```java
+Optional<Integer> maybeId = Optional.ofNullable(1);
+maybeId.map(id -> { System.out.println(id); return id; });
+```
+
+---
+
+## Map、Filter、Reduce
+
+ここで説明する Map、Filter、Reduce はコレクションやストリームを扱う高階関数を使うパターンです。
+
+- map(f) は、要素の型を変換する関数が引数になります。元の型 E を変換後の型 F にします。
+- filter(f) は、要素の値を評価して通過させる場合は true、破棄する場合は false を返す関数が引数になります。
+- reduce(f) は、コレクションやストリームの要素の合計値を求めるというような計算に使用します。引数は要素の値を使って集計する関数になります。
+
+```scala
+val seq = Seq("1", "2", "3", "2", "2", "4")
+seq.map(_.toInt).filter(_ == 2).reduce((x, y) => x + y)
+```
+
+---
+
+## method と function の違い
+
+C++ や Java ではオブジェクトにフィールド (field) やメソッド (method) を定義します。method はオブジェクトの field を使用するロジックを記述します。
+
+ロジックは、基本的には上のステートメントから下のステートメントに順番に実行され、ループによって上のステートメントに戻ったり、条件文によって、特定のコードブロックが実行される、手法 (method) を記述します。
+
+対して、関数 (function) は式 (formula) を定義します。
+
+---
+
+## Scala の Option の使い方
+
+Option[T] は None か Some(T) のいずれかになります。
+
+```scala
+val maybeId: Option[Integer] = Option(1) // or Some(1)
+maybeId.map { id => System.out.println(id); id; }
+```
+
+---
+
+## Scala の Either の使い方
+
+Either[L, R] は Left(L) か Right(R) のいずれかになります。
+
+```scala
+import java.io._
+val line: Either[IOException, String] = Right("abc")
+line.map { l => System.out.println(l); l; }
+```
+
+---
+
+## Scala の Try の使い方
+
+Try[+T] は Success(T) か Failure(E) のいずれかになります。
+
+```scala
+import scala.util.Try
+Try("123").map(_.toInt)
+```
