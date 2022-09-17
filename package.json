@@ -1,0 +1,23 @@
+{
+  "name": "presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takesection/presentation.git"
+  },
+  "author": "Shigeki Shoji",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takesection/presentation/issues"
+  },
+  "homepage": "https://github.com/takesection/presentation#readme",
+  "dependencies": {
+    "markdown-it": "^13.0.1",
+    "markdown-it-iframe": "^1.0.0"
+  }
+}
