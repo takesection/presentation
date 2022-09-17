@@ -12,7 +12,7 @@ var md = require('markdown-it')().use(markdownItIframe, {
 readFile('index.md', (err, data) => {
     console.log(data);
     if (err) throw err;
-    writeFile('introduction-of-functional-programming.html', md.render(data.toString()), (err) => {
+    writeFile('docs/index.html', md.render(data.toString()), (err) => {
         if (err) throw err;
     });
 });
