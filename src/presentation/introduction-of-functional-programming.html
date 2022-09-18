@@ -15,13 +15,13 @@
 <a href="https://twitter.com/takesection">@takesection</a><br />
 2022-09-14</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" data-marpit-pagination="2" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>ゴール</h2>
 <ul>
 <li>Functional Programming (関数型プログラミング) の土台となるコンセプトを理解する</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="default" data-marpit-pagination="3" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>目次</h2>
 <ul>
 <li>Referential Transparency (参照透過性)</li>
@@ -31,7 +31,7 @@
 <li>Map、Filter、Reduce</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="default" data-marpit-pagination="4" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Referential Transparency (参照透過性)</h2>
 <p>参照透過性とは、「プログラムの構成要素が同じもの同士は等しい」ということです。</p>
 <p>例えば:</p>
@@ -42,11 +42,11 @@
 </ul>
 <p>つまり、変数 a と b に同じ値 (1 や abc や f(1)) を代入しているなら、a と b は等しいということになります。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" data-marpit-pagination="5" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>参照透過性の利点 (An advantage of referential transparency)</h2>
 <p>参照透過性の利点は、数学的推論が利用できることです。f(1) の計算結果は常に f(1) の計算結果と等しいため、その時の状況によって結果が変わらないため、テストが容易になります。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" data-marpit-pagination="6" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Immutable (不変性)</h2>
 <p>構造化/手続き型/ 命令型プログラミングでは、次の例のように、変数をミュータブルに使用するのが一般的です。</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-java"><span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
@@ -55,13 +55,13 @@
 <p>変数 sum、x の値はプログラムの実行中に値を変化させます。これは、参照透過性の破壊を意味します。</p>
 <p>関数型プログラミングでは、イミュータブルな変数を利用することが一般的です。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" data-marpit-pagination="7" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Side Effect (副作用)</h2>
 <p>関数がファイルやデータベース、ネットワーク等外部との入出力に依存している場合、外部環境の変化により関数の結果が変化することがあります。このような作用を「副作用」と呼びます。副作用もまた参照透過性の破壊に繋がります。</p>
 <p>この副作用を伴わずに参照透過性を持つ関数を「純粋な関数」と呼びます。</p>
 <p>関数型プログラミングで、副作用を伴う関数を定義する場合、副作用を特定の関数内に隔離することがベストプラクティスになります。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="default" data-marpit-pagination="8" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Higher-order Function (高階関数)</h2>
 <p>高階関数とは、簡単にいうと引数に関数を、あるいは関数を返す関数です。</p>
 <p>次の例は、Javaによる高階関数を定義する例です。Optional.map() は引数が関数 (Function) です。関数には、次のようにラムダ関数も使用できます:</p>
@@ -69,7 +69,7 @@
 maybeId.map(id -&gt; { System.out.println(id); <span class="hljs-keyword">return</span> id; });
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" data-marpit-pagination="9" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Map、Filter、Reduce</h2>
 <p>ここで説明する Map、Filter、Reduce はコレクションやストリームを扱う高階関数を使うパターンです。</p>
 <ul>
@@ -81,20 +81,20 @@ maybeId.map(id -&gt; { System.out.println(id); <span class="hljs-keyword">return
 seq.map(_.toInt).filter(_ == <span class="hljs-number">2</span>).reduce((x, y) =&gt; x + y)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" data-marpit-pagination="10" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>method と function の違い</h2>
 <p>C++ や Java ではオブジェクトにフィールド (field) やメソッド (method) を定義します。method はオブジェクトの field を使用するロジックを記述します。</p>
 <p>ロジックは、基本的には上のステートメントから下のステートメントに順番に実行され、ループによって上のステートメントに戻ったり、条件文によって、特定のコードブロックが実行される、手法 (method) を記述します。</p>
 <p>対して、関数 (function) は式 (formula) を定義します。</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" data-marpit-pagination="11" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Scala の Option の使い方</h2>
 <p>Option[T] は None か Some(T) のいずれかになります。</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-scala"><span class="hljs-keyword">val</span> maybeId: <span class="hljs-type">Option</span>[<span class="hljs-type">Integer</span>] = <span class="hljs-type">Option</span>(<span class="hljs-number">1</span>) <span class="hljs-comment">// or Some(1)</span>
 maybeId.map { id =&gt; <span class="hljs-type">System</span>.out.println(id); id; }
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" data-marpit-pagination="12" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Scala の Either の使い方</h2>
 <p>Either[L, R] は Left(L) か Right(R) のいずれかになります。</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-scala"><span class="hljs-keyword">import</span> java.io._
@@ -102,7 +102,7 @@ maybeId.map { id =&gt; <span class="hljs-type">System</span>.out.println(id); id
 line.map { l =&gt; <span class="hljs-type">System</span>.out.println(l); l; }
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-theme="default" style="--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" data-marpit-pagination="13" data-marpit-pagination-total="13" style="--paginate:true;--theme:default;">
 <h2>Scala の Try の使い方</h2>
 <p>Try[+T] は Success(T) か Failure(E) のいずれかになります。</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-scala"><span class="hljs-keyword">import</span> scala.util.<span class="hljs-type">Try</span>
