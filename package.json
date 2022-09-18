@@ -4,9 +4,7 @@
   "description": "",
   "scripts": {
     "start": "eleventy --serve",
-    "build:marp": "marp src/presentation/introduction-of-functional-programming.marp -o src/presentation/introduction-of-functional-programming.html",
-    "build:eleventy": "eleventy",
-    "build": "npm-run-all build:marp build:eleventy"
+    "build": "eleventy"
   },
   "repository": {
     "type": "git",
