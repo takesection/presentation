@@ -15,14 +15,8 @@ module.exports = eleventyConfig => {
             const content = fs.readFileSync(inputPath).toString();
             const result = marp.render(content);
             return async (data) => {
-                const html = "<head>\n" +
-                    '<meta charset="utf-8">' +
-                    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
-                    '<title>' + data.title + '</title>' +
-                    "<style>" + result.css + "</style>" +
-                    "</head>\n" +
-                    "<body>" + result.html + "</body>";
-                return html;
+                data.css = result.css;
+                return result.html;
             }; 
         }
     });
