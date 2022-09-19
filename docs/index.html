@@ -4,15 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo</title>
+  <style>
+    .site-header {
+    }
+    .site-content {
+      margin-left: 100px;
+    }
+    .site-footer {
+    }
+    .site-info {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .slide {
+      border: 1px solid;
+    }
+  </style>
 </head>
 <body>
-<h1>関数型プログラミング超入門</h1>
+<div id="content" class="site-content">
+<h1>デモサイト</h1>
 
-<iframe src="presentation/introduction-of-functional-programming/" width="832px" height="468px"></iframe>
+<iframe src="presentation/introduction-of-functional-programming/" width="832px" height="468px" class="slide"></iframe>
 
 <p>
 <a href="https://github.com/takesection/presentation" target="_blank">GitHub リポジトリ</a>
 </p>
 
+<footer class="site-footer">
+  <p class="site-info">
+    Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a>
+  </p>
+</footer>
+</div>
 </body>
 </html>
