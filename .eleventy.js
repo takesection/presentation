@@ -1,21 +1,29 @@
-const crypto = require("node:crypto");
-const fs = require("node:fs");
-const marp = require("@marp-team/marp-cli");
+const marpCore = require("@marp-team/marp-core");
+const marpit = require("@marp-team/marpit");
+const fs = require("fs");
 
 module.exports = eleventyConfig => {
+    eleventyConfig.addPassthroughCopy("src/script");
     eleventyConfig.addTemplateFormats("marp");
     eleventyConfig.addExtension("marp", {
         compile: async (inputContent, inputPath) => {
-            const outputPath = crypto.randomUUID() + '.html';
-            return marp.marpCli([ inputPath, "-o", outputPath]).then(exitCode => {
-                if (exitCode !== 0) throw "Error";
-                try {
-                    const result = fs.readFileSync(outputPath);
-                    return () => result;
-                } finally {
-                    fs.rmSync(outputPath);
-                }
+            const marp = new marpCore.Marp({
+                container: [
+                    new marpit.Element('div', { id: 'p'})
+                ]
             });
+            const content = fs.readFileSync(inputPath).toString();
+            const result = marp.render(content);
+            return async (data) => {
+                const html = "<head>\n" +
+                    '<meta charset="utf-8">' +
+                    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+                    '<title>' + data.title + '</title>' +
+                    "<style>" + result.css + "</style>" +
+                    "</head>\n" +
+                    "<body>" + result.html + "</body>";
+                return html;
+            }; 
         }
     });
     return {
