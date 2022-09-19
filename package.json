@@ -28,7 +28,6 @@
   "dependencies": {
     "bespoke": "^1.1.0",
     "bespoke-keys": "^1.1.0",
-    "bespoke-theme-simple-slide": "^0.1.0",
     "bespoke-touch": "^1.0.0",
     "insert-css": "^2.0.0"
   }
