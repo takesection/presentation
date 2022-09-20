@@ -4,6 +4,7 @@ const fs = require("fs");
 
 module.exports = eleventyConfig => {
     eleventyConfig.addPassthroughCopy("src/script");
+    eleventyConfig.addPassthroughCopy("src/img");
     eleventyConfig.addTemplateFormats("marp");
     eleventyConfig.addExtension("marp", {
         compile: async (inputContent, inputPath) => {
