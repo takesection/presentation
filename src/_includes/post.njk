@@ -30,6 +30,8 @@
 <body>
 <header class=".site-header"><img src="/img/pigumer.png" width="62px" /></header>
 <div id="content" class="site-content">
+{{ page.date | dateFormat }}
+<hr>
 {{ content | safe }}
 <footer class="site-footer">
   <p class="site-info">

@@ -2,8 +2,6 @@
 title: Demo
 date: 2022-09-14
 ---
-{{ page.date | dateFormat }}
-
 # デモサイト
 
 Eleventy と Marp を使ったスライドを埋め込むデモです。
