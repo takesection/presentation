@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo Site</title>
+  <title>{{ title }}</title>
   <style>
     .site-header {
     }
@@ -24,11 +24,7 @@
 <body>
 <header class=".site-header"><img src="/img/pigumer.png" width="62px" /></header>
 <div id="content" class="site-content">
-<h1>Latest</h1>
-
-<ul><li>September 14, 2022: <a href="/2022/09/14/demo/">Demo</a></li></ul>
-
-<p><a href="https://github.com/takesection/presentation" target="_blank">GitHub リポジトリ</a></p>
+{{ content | safe }}
 <footer class="site-footer">
   <p class="site-info">
     Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
