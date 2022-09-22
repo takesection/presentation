@@ -16,6 +16,9 @@ module.exports = function(eleventyConfig) {
     const dateFormat = (jsDate) => 
         DateTime.fromJSDate(jsDate).setLocale('en').toLocaleString({ year: 'numeric', month: 'long', day: 'numeric' });
    
+    const getPosts = (collection) => {
+        return collection.getAll().filter(post => post.data.layout === "post").sort((a, b) => a.date - b.date);
+    };
 
     eleventyConfig.addPassthroughCopy("src/script");
     eleventyConfig.addPassthroughCopy("src/img");
@@ -40,6 +43,8 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter("dateFormat", dateFormat);
+
+    eleventyConfig.addCollection('posts', getPosts);
 
     return {
         dir: {
