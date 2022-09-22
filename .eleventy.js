@@ -3,6 +3,8 @@ const { Marp } = require("@marp-team/marp-core");
 const { Element } = require("@marp-team/marpit");
 const { DateTime } = require("luxon");
 const { Liquid } = require("liquidjs");
+const markdownIt = require("markdown-it");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
     const marp = new Marp({
@@ -45,6 +47,15 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("dateFormat", dateFormat);
 
     eleventyConfig.addCollection('posts', getPosts);
+
+    const markdownOptions = {
+        html: true,
+        breaks: true,
+        linkify: true
+    };
+    eleventyConfig.setLibrary("md", markdownIt(markdownOptions));
+
+    eleventyConfig.addPlugin(syntaxHighlight);
 
     return {
         dir: {
