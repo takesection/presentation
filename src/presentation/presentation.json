@@ -1,3 +1,4 @@
 {
-    "layout": "bespoke"
+    "layout": "presentation",
+    "permalink": "/presentation/{{ page.date | date: '%Y/%m/%d' }}/{{ page.fileSlug }}/" 
 }
