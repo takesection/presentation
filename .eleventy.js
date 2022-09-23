@@ -19,7 +19,7 @@ module.exports = function(eleventyConfig) {
         DateTime.fromJSDate(jsDate).setLocale('en').toLocaleString({ year: 'numeric', month: 'long', day: 'numeric' });
    
     const getPosts = (collection) => {
-        return collection.getAll().filter(post => post.data.layout === "post").sort((a, b) => a.date - b.date);
+        return collection.getAll().filter(post => post.data.layout === "post").sort((a, b) => b.date - a.date);
     };
 
     eleventyConfig.addPassthroughCopy("src/script");
