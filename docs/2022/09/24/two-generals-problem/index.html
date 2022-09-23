@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Generals&#39; Problem (二人の将軍問題)</title>
+  <style>
+    body {
+      width: 882px; 
+    }
+    .logo {
+      display: flex;
+      width: 62px;
+    }
+    .site-header {
+    }
+    .site-content {
+      margin-left: 50px;
+    }
+    .site-footer {
+    }
+    .site-info {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .slide {
+      border: 1px solid;
+      width: 768px;
+      height: 432px;
+    }
+    .post-header {
+      margin-bottom: 1.7em;
+    }
+    .post-meta {
+      color: #000;
+      font-size: 0.7rem;
+    }
+  </style>
+  <head>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+  </head>
+</head>
+<body>
+<header class="site-header"><a href="/"><img class="logo" src="/img/pigumer.png" /></a></header>
+<div id="content" class="site-content">
+  <header class="post-header">
+    <div class="post-meta">
+      <time class="published" datetime="Sat Sep 24 2022 09:00:00 GMT+0900 (日本標準時)">September 24, 2022</time>
+    </div>
+  </header>
+  <p>イベント駆動などを利用した分散アーキテクチャでは、次のようなメッセージ配信の信頼性についての理解が必要になります。</p>
+<ul>
+<li>at most once: 最大で1回</li>
+<li>at least once: 少なくとも1回</li>
+<li>exactly once: 確実に1回</li>
+</ul>
+<p>そして信頼性を保証できない分散アーキテクチャでは「exactly once: 確実に1回」は不可能なことを説明する有名な問題として、「<a href="https://ja.wikipedia.org/wiki/%E4%BA%8C%E4%BA%BA%E3%81%AE%E5%B0%86%E8%BB%8D%E5%95%8F%E9%A1%8C">二人の将軍問題 (Two Generals' Problem)</a>」があります。</p>
+<p>従って、分散アーキテクチャでは「exactly once: 確実に1回」ではなく、「at least once: 少なくとも1回」を活用して、重複を排除する、つまりべき等性を担保する設計によって「effectively once: 効果として1回」を、必要に応じて利用することになります。</p>
+
+  <footer class="site-footer">
+    <p class="site-info">
+      Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
+    </p>
+  </footer>
+</div>
+</div>
+</body>
+</html>
