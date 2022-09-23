@@ -1,5 +1,5 @@
 ---
-title: Two Generals' Problem (二人の将軍問題)
+title: Two Generals' Problem
 date: 2022-09-24
 ---
 
