@@ -51,7 +51,7 @@
 <body>
 <header class="site-header"><img src="/img/pigumer.png" class="logo" /></header>
 <div id="content" class="site-content">
-
+{{ content | safe }}
 <div class="post-feed">
   <div class="post-feed-title">Latest Posts</div>
   {%- for post in collections.posts -%}

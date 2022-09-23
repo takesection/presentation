@@ -1,4 +1,4 @@
 ---
-title: Demo Site
+title: Blog
 layout: home.njk
 ---
