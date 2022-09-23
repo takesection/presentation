@@ -3,7 +3,7 @@
 
 ## GitHub Pages を使ったデモサイト
 
-- [https://presentation.pigumer.com/](https://presentation.pigumer.com/)
+- [https://blog.pigumer.com/](https://blog.pigumer.com/)
 
 ## 静的サイトジェネレーター
 
