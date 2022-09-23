@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo</title>
   <style>
+    body {
+      width: 882px; 
+    }
+    .logo {
+      display: flex;
+      width: 62px;
+    }
     .site-header {
     }
     .site-content {
@@ -18,9 +25,15 @@
     }
     .slide {
       border: 1px solid;
+      width: 768px;
+      height: 432px;
     }
-    body {
-      width: 882px; 
+    .post-header {
+      margin-bottom: 1.7em;
+    }
+    .post-meta {
+      color: #000;
+      font-size: 0.7rem;
     }
   </style>
   <head>
@@ -28,20 +41,24 @@
   </head>
 </head>
 <body>
-<header class=".site-header"><img src="/img/pigumer.png" width="62px" /></header>
+<header class="site-header"><a href="/"><img class="logo" src="/img/pigumer.png" /></a></header>
 <div id="content" class="site-content">
-September 14, 2022
-<hr>
-<h1>デモサイト</h1>
+  <header class="post-header">
+    <div class="post-meta">
+      <time class="published" datetime="Wed Sep 14 2022 09:00:00 GMT+0900 (日本標準時)">September 14, 2022</time>
+    </div>
+  </header>
+  <h1>デモサイト</h1>
 <p>Eleventy と Marp を使ったスライドを埋め込むデモです。</p>
-<iframe src="/presentation/2022/09/14/introduction-of-functional-programming/" width="832px" height="468px" class="slide"></iframe>
+<iframe src="/presentation/2022/09/14/introduction-of-functional-programming/" class="slide"></iframe>
 <p>このデモのソースコードは、<a href="https://github.com/takesection/presentation">GitHub Repository</a>にあります。</p>
 
-<footer class="site-footer">
-  <p class="site-info">
-    Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
-  </p>
-</footer>
+  <footer class="site-footer">
+    <p class="site-info">
+      Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
+    </p>
+  </footer>
+</div>
 </div>
 </body>
 </html>

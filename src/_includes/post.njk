@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
   <style>
+    body {
+      width: 882px; 
+    }
+    .logo {
+      display: flex;
+      width: 62px;
+    }
     .site-header {
     }
     .site-content {
@@ -18,9 +25,15 @@
     }
     .slide {
       border: 1px solid;
+      width: 768px;
+      height: 432px;
     }
-    body {
-      width: 882px; 
+    .post-header {
+      margin-bottom: 1.7em;
+    }
+    .post-meta {
+      color: #000;
+      font-size: 0.7rem;
     }
   </style>
   <head>
@@ -28,16 +41,20 @@
   </head>
 </head>
 <body>
-<header class=".site-header"><img src="/img/pigumer.png" width="62px" /></header>
+<header class="site-header"><a href="/"><img class="logo" src="/img/pigumer.png" /></a></header>
 <div id="content" class="site-content">
-{{ page.date | dateFormat }}
-<hr>
-{{ content | safe }}
-<footer class="site-footer">
-  <p class="site-info">
-    Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
-  </p>
-</footer>
+  <header class="post-header">
+    <div class="post-meta">
+      <time class="published" datetime="{{ page.date }}">{{ page.date | dateFormat }}</time>
+    </div>
+  </header>
+  {{ content | safe }}
+  <footer class="site-footer">
+    <p class="site-info">
+      Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
+    </p>
+  </footer>
+</div>
 </div>
 </body>
 </html>
