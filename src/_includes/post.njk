@@ -2,9 +2,14 @@
 <html lang="ja-JP">
 <head>
   <meta charset="utf-8" />
-  {% set pageSocialImg %}{{meta.url}}/previews/{{title | slug }}.png{% endset %}
-  <meta property="og:image" content="{{pageSocialImg}}" />
-  <meta name="twitter:image" content="{{pageSocialImg}}" />
+  {% set pageSocialImg %}{{ meta.url }}/previews/{{ title | slug }}.png{% endset %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@takesection" />
+  <meta name="twitter:creator" content="@takesection" />
+  <meta property="og:site_name" content="Edward's Blog" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:image" content="{{ pageSocialImg }}" />
+  <meta property="og:url" content="{{ meta.url }}{{ page.url }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }}</title>
   <style>
