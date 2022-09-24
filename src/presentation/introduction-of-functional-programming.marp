@@ -2,6 +2,7 @@
 marp: true
 title: 関数型超入門
 description: Introduction to functional programming
+cover: https://blog.pigumer.com/img/introduction-to-functional-programming.png
 theme: default
 date: 2022-09-14
 ---
