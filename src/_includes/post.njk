@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ja-JP" prefix="og: http://ogp.me/ns#">
+<html lang="ja-JP">
 <head>
   <meta charset="utf-8" />
   {% set pageSocialImg %}{{ meta.url }}/previews/{{ title | slug }}.png{% endset %}
+  <meta name="description" content="{{ description }}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@takesection" />
   <meta name="twitter:creator" content="@takesection" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ description }}" />
+  <meta name="twitter:image" content="{{ pageSocialImg }}" />
   <meta property="og:site_name" content="Edward's Blog" />
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:type" content="blog" />
