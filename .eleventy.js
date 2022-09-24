@@ -5,6 +5,8 @@ const { DateTime } = require("luxon");
 const { Liquid } = require("liquidjs");
 const markdownIt = require("markdown-it");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
+const slugify = require("slugify");
 
 module.exports = function(eleventyConfig) {
     const marp = new Marp({
@@ -22,8 +24,15 @@ module.exports = function(eleventyConfig) {
         return collection.getAll().filter(post => post.data.layout === "post").sort((a, b) => b.date - a.date);
     };
 
+    const slug = (str) => slugify(str, {
+        lower: true,
+        replacement: "-",
+        remove: /[*+~·,()'"`´%!?¿:@\/]/g
+    });
+
     eleventyConfig.addPassthroughCopy("src/script");
     eleventyConfig.addPassthroughCopy("src/img");
+    eleventyConfig.addPassthroughCopy("src/previews");
     
     eleventyConfig.addTemplateFormats("marp");
     eleventyConfig.addExtension("marp", {
@@ -45,6 +54,7 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter("dateFormat", dateFormat);
+    eleventyConfig.addFilter("slug", slug);
 
     eleventyConfig.addCollection('posts', getPosts);
 
@@ -56,6 +66,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", markdownIt(markdownOptions));
 
     eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.addPlugin(socialImages);
 
     return {
         dir: {
