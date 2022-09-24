@@ -1,5 +1,6 @@
 ---
 title: Demo
+description: Eleventy と Marp を使ったスライドを埋め込むデモ
 date: 2022-09-14
 ---
 # スライドデモ 

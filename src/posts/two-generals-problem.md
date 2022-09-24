@@ -1,5 +1,6 @@
 ---
 title: Two Generals' Problem
+description: Two Generals' Problem and Effectively Once
 date: 2022-09-24
 ---
 

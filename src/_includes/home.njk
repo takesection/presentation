@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja-JP">
+<html lang="ja-JP" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="utf-8" />
   {% set pageSocialImg %}{{ meta.url }}/previews/{{ title | slug }}.png{% endset %}
@@ -8,6 +8,8 @@
   <meta name="twitter:creator" content="@takesection" />
   <meta property="og:site_name" content="Edward's Blog" />
   <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="my own words" />
   <meta property="og:image" content="{{ pageSocialImg }}" />
   <meta property="og:url" content="{{ meta.url }}{{ page.url }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

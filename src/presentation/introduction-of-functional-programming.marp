@@ -1,6 +1,7 @@
 ---
 marp: true
 title: 関数型超入門
+description: Introduction to functional programming
 theme: default
 date: 2022-09-14
 ---
