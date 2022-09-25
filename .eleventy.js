@@ -30,6 +30,7 @@ module.exports = function(eleventyConfig) {
         remove: /[*+~·,()'"`´%!?¿:@\/]/g
     });
 
+    eleventyConfig.addPassthroughCopy("src/css");
     eleventyConfig.addPassthroughCopy("src/script");
     eleventyConfig.addPassthroughCopy("src/img");
     eleventyConfig.addPassthroughCopy("src/previews");
