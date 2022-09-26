@@ -1,0 +1,104 @@
+---
+marp: true
+title: Setup Apple Silicon Mac
+description: How to Install Homebrew and more.
+theme: default
+date: 2022-09-26
+---
+
+# M1 Mac のセットアップ
+Shigeki Shoji 
+2022-09-26
+![bg right:40%](https://blog.pigumer.com/img/kobe.jpg)
+
+---
+<!--
+paginate: true
+-->
+
+# 概要
+
+このスライドは個人的なセットアップ手順のメモです。
+
+---
+
+# Homebrew をインストールする
+
+まず、パッケージマネージャの [Homebrew](https://brew.sh/) をインストールします。
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+---
+
+# Rancher Desktop をインストールする
+
+Docker Desktop のかわりとなる [Rancher Desktop](https://rancherdesktop.io/) をインストールします。
+
+```shell
+brew install --cask rancher
+```
+
+---
+
+# Git をインストールする
+
+次に、git をインストールします。
+
+```shell
+brew install git
+```
+
+---
+
+# asdf をインストールする
+
+次に、asdf をインストールします。
+
+```shell
+brew install asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+```
+
+`. /opt/homebrew/opt/asdf/libexec/asdf.sh` を毎回実行しないようにするため、『[バージョン管理ツール「asdf」使ってみた](https://dev.classmethod.jp/articles/try-asdf-settings/)』 などの記事を参照して、プロファイルに追記します。
+
+---
+
+# java をインストールする
+
+```shell
+asdf plugin add java
+asdf install java temurin-17.0.4+101
+asdf local java temurin-17.0.4+101
+java -version
+```
+
+---
+
+# scala をインストールする
+
+```shell
+asdf plugin add scala
+asdf install scala 2.13.9
+asdf local scala 2.13.9
+```
+
+---
+
+# その他
+
+`asdf plugin list all` を実行すると、次のようなさまざまな plugin を確認することができます。
+
+```shell
+asdf plugin list all
+
+(省略)
+awscli                        https://github.com/MetricMike/asdf-awscli.git
+(省略)
+maven                         https://github.com/halcyon/asdf-maven.git
+(省略)
+gradle                        https://github.com/rfrancis/asdf-gradle.git
+(省略)
+sbt                           https://github.com/bram2000/asdf-sbt.git
+```
