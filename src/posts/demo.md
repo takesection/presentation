@@ -11,4 +11,4 @@ PC の場合は、スライド部分をクリックした後、カーソルキ�
 
 <iframe src="/presentation/2022/09/14/introduction-of-functional-programming/" class="slide"></iframe>
 
-このデモのソースコードは、[GitHub Repository](https://github.com/takesection/presentation)にあります。
+このサイトは、GitHub Pages によってホストされています。このデモのソースコードは、[GitHub Repository](https://github.com/takesection/presentation)にあります。
