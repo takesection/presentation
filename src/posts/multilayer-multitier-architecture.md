@@ -9,3 +9,7 @@ date: 2022-09-29
 
 上述の伝統的なアプリケーションにおいても、アプリケーションとリレーショナルデータベースは異なるサーバーに分散されていることが多いです。
 アプリケーションとデータベースのように、複数の物理的な階層を使用するアーキテクチャは、"multi-tier architecture" と呼ばれます。
+
+## 参考
+
+- [Multi-layer / Multi-tier architectural pattern](https://www.taithienbo.com/multi-layer-multi-tier-architectural-pattern/)
