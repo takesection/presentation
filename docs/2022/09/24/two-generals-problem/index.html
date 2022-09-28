@@ -38,6 +38,11 @@
 </ul>
 <p>そして信頼性を保証できない分散アーキテクチャでは「exactly once: 確実に1回」は不可能なことを説明する有名な問題として、「<a href="https://ja.wikipedia.org/wiki/%E4%BA%8C%E4%BA%BA%E3%81%AE%E5%B0%86%E8%BB%8D%E5%95%8F%E9%A1%8C">二人の将軍問題 (Two Generals' Problem)</a>」があります。</p>
 <p>従って、分散アーキテクチャでは「exactly once: 確実に1回」ではなく、「at least once: 少なくとも1回」を活用して、重複を排除する、つまりべき等性を担保する設計によって「effectively once: 効果として1回」を、必要に応じて利用することになります。</p>
+<h2>参考</h2>
+<ul>
+<li><a href="https://www.lightbend.com/blog/how-akka-works-exactly-once-message-delivery">How Akka Works: 'Exactly Once' Message Delivery</a></li>
+<li><a href="https://pulsar.apache.org/docs/concepts-messaging/#deduplication-and-effectively-once-semantics">Messaging | Apache Pulsar</a></li>
+</ul>
 
   <footer class="site-footer">
     <p class="site-info">
