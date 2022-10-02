@@ -21,11 +21,18 @@
     height: 45vw;
 }
 .post-header {
+    display: flex;
     margin-bottom: 1.7em;
 }
 .post-meta {
     color: #000;
     font-size: 0.7rem;
+    float: right;
+}
+.post-meta-image {
+    width: 12vw;
+    float: left;
+    margin: 0 1em;
 }
 .post-feed .post {
     border-bottom: 1px solid #eee;

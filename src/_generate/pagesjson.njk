@@ -3,9 +3,10 @@ permalink: build/pages.json
 permalinkBypassOutputDir: true
 eleventyExcludeFromCollections: true
 ---
-[{% for pages in collections.all %}
+[{% for page in collections.all %}
 	{
-   "title":"{{ pages.data.title | addNbsp | safe }}",
-   "imgName":"{{ pages.data.title | slug}}"
+   "title":"{{ page.data.title | addNbsp | safe }}",
+   "imgName":"{{ page.data.title | slug }}",
+   "cover":"{{ page.data.cover }}"
    }{% if loop.last == false %},{% endif %}
 {% endfor %}]
