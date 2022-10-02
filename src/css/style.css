@@ -30,6 +30,7 @@
     float: right;
 }
 .post-meta-image {
+    border: 1px solid;
     width: 24vw;
     height: 13.5vw;
     float: left;

@@ -1,6 +1,7 @@
 ---
 title: Demo
 description: Eleventy と Marp を使ったスライドを埋め込むデモ
+cover: https://blog.pigumer.com/img/introduction-to-functional-programming.png
 date: 2022-09-14
 ---
 # スライドデモ 
