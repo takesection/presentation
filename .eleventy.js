@@ -4,9 +4,11 @@ const { Element } = require("@marp-team/marpit");
 const { DateTime } = require("luxon");
 const { Liquid } = require("liquidjs");
 const markdownIt = require("markdown-it");
+const markdownItFootnote = require("markdown-it-footnote");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
 const slugify = require("slugify");
+const footnotes = require("eleventy-plugin-footnotes");
 
 module.exports = function(eleventyConfig) {
     const marp = new Marp({
@@ -64,10 +66,11 @@ module.exports = function(eleventyConfig) {
         breaks: true,
         linkify: true
     };
-    eleventyConfig.setLibrary("md", markdownIt(markdownOptions));
+    eleventyConfig.setLibrary("md", markdownIt(markdownOptions).use(markdownItFootnote));
 
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(socialImages);
+    eleventyConfig.addPlugin(footnotes);
 
     return {
         dir: {

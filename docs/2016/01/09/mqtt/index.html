@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+  <meta charset="utf-8" />
+  
+  <link rel="icon" type="image/png" href="https://blog.pigumer.com/img/pigumer.png" />
+  <meta name="description" content="この記事は2016年1月9日に投稿した記事を復元したものです。" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@takesection" />
+  <meta name="twitter:creator" content="@takesection" />
+  <meta name="twitter:title" content="CentOS 7にmosquitto(MQTT)をインストールする" />
+  <meta name="twitter:description" content="この記事は2016年1月9日に投稿した記事を復元したものです。" />
+  <meta name="twitter:image" content="https://blog.pigumer.com/previews/centos-7にmosquittomqttをインストールする.png" />
+  <meta property="og:site_name" content="Edward's Blog" />
+  <meta property="og:title" content="CentOS 7にmosquitto(MQTT)をインストールする" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="この記事は2016年1月9日に投稿した記事を復元したものです。" />
+  <meta property="og:image" content="https://blog.pigumer.com/previews/centos-7にmosquittomqttをインストールする.png" />
+  <meta property="og:url" content="https://blog.pigumer.com/2016/01/09/mqtt/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CentOS 7にmosquitto(MQTT)をインストールする</title>
+  <link href="/css/style.css" rel="stylesheet" />
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+</head>
+<body>
+<header class="site-header"><a href="/"><img class="logo" src="/img/pigumer.png" /></a></header>
+<div id="content" class="site-content">
+  <header class="post-header">
+    <div class="post-meta">
+      <time class="published" datetime="Sat Jan 09 2016 09:00:00 GMT+0900 (日本標準時)">January 9, 2016</time>
+    </div>
+  </header>
+  <h1>CentOS 7にmosquittoをインストールする</h1>
+<h2>バージョン情報</h2>
+<ul>
+<li>mosquitto version 1.4.7 (build date 2015-12-27 20:21:31+0000)</li>
+</ul>
+<pre class="language-shell"><code class="language-shell">openssl version<br>OpenSSL <span class="token number">1.0</span>.1e-fips <span class="token number">11</span> Feb <span class="token number">2013</span></code></pre>
+<h2>ポートを開ける</h2>
+<p>IoTデバイス等の外部からのメッセージを受けることを想定して、SSL/TLSのMQTTのポート(8883)を開けます。</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> firewall-cmd --add-port<span class="token operator">=</span><span class="token number">8883</span>/tcp <span class="token parameter variable">--zone</span><span class="token operator">=</span>public <span class="token parameter variable">--permanent</span><br><span class="token function">sudo</span> systemctl restart firewalld</code></pre>
+<h2>mosquitto.repoの作成</h2>
+<p><a href="http://mosquitto.org/download/">http://mosquitto.org/download/</a> のCentOS 7のリンクにアクセスして、/etc/yum.repos.d/mosquitto.repo を作成します。</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> yum update<br><span class="token function">sudo</span> yum <span class="token function">install</span> mosquitto mosquitto-clients<br><span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> mosquitto</code></pre>
+<h2>認証局の証明書作成</h2>
+<p>いわゆるオレオレ認証局の証明書を作成します。有効期限は１年間(365日)で作成しています<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /opt/ca<br><span class="token builtin class-name">cd</span> /opt/ca<br>openssl req <span class="token parameter variable">-new</span> <span class="token parameter variable">-x509</span> <span class="token parameter variable">-days</span> <span class="token number">365</span> <span class="token parameter variable">-extensions</span> v3_ca <span class="token parameter variable">-keyout</span> ca.key <span class="token parameter variable">-out</span> ca.crt</code></pre>
+<h2>サーバ証明書作成</h2>
+<p>MQTTサーバで使用するサーバ証明書を作成します。</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /opt/server<br><span class="token builtin class-name">cd</span> /opt/server<br>openssl genrsa <span class="token parameter variable">-out</span> server.key <span class="token number">2048</span><br>openssl req <span class="token parameter variable">-out</span> server.csr <span class="token parameter variable">-key</span> server.key <span class="token parameter variable">-new</span><br>openssl x509 <span class="token parameter variable">-req</span> <span class="token parameter variable">-in</span> server.csr <span class="token parameter variable">-CA</span> /opt/ca/ca.crt <span class="token parameter variable">-CAkey</span> /opt/ca/ca.key <span class="token parameter variable">-CAcreateserial</span> <span class="token parameter variable">-out</span> server.crt <span class="token parameter variable">-days</span> <span class="token number">365</span></code></pre>
+<h2>パスワードファイル作成</h2>
+<p>パスワードファイルを作成します。この例ではmqttユーザのパスワードを設定します。</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> mosquitto_passwd <span class="token parameter variable">-c</span> /etc/mosquitto/pwfile mqtt</code></pre>
+<h2>設定ファイル</h2>
+<p>/etc/mosquitto/mosquitto.conf を次のように記述します。</p>
+<pre class="language-text"><code class="language-text"># Place your local configuration in /etc/mosquitto/conf.d/<br><br>pid_file /var/run/mosquitto.pid<br><br>listener 8883<br>cafile /opt/ca/ca.crt<br>certfile /opt/server/server.crt<br>keyfile /opt/server/server.key<br><br>persistence true<br>persistence_location /var/lib/mosquitto/<br><br>#log_dest file /var/log/mosquitto/mosquitto.log<br><br>allow_anonymous false<br><br>password_file /etc/mosquitto/pwfile<br><br>include_dir /etc/mosquitto/conf.d</code></pre>
+<h2>サーバの起動</h2>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> systemctl start mosquitto</code></pre>
+<h1>Publish</h1>
+<pre class="language-shell"><code class="language-shell">mosquitto_pub <span class="token parameter variable">-h</span> <span class="token punctuation">[</span>FQDN<span class="token punctuation">]</span> <span class="token parameter variable">-p</span> <span class="token number">8883</span> <span class="token parameter variable">--cafile</span> /opt/ca/ca.crt <span class="token parameter variable">-u</span> mqtt <span class="token parameter variable">-P</span> <span class="token punctuation">[</span>PASSWORD<span class="token punctuation">]</span> <span class="token parameter variable">-t</span> <span class="token string">'topic/test'</span> <span class="token parameter variable">-m</span> <span class="token string">'foo'</span></code></pre>
+<h1>Subscribe</h1>
+<pre class="language-shell"><code class="language-shell">mosquitto_sub <span class="token parameter variable">-h</span> <span class="token punctuation">[</span>FQDN<span class="token punctuation">]</span> <span class="token parameter variable">-p</span> <span class="token number">8883</span> <span class="token parameter variable">--cafile</span> /opt/ca/ca.crt <span class="token parameter variable">-u</span> mqtt <span class="token parameter variable">-P</span> <span class="token punctuation">[</span>PASSWORD<span class="token punctuation">]</span> <span class="token parameter variable">-v</span> <span class="token parameter variable">-t</span> <span class="token string">'topic/test'</span></code></pre>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>認証局のCN(Common Name)とサーバ証明書のCN(Common Name)に同じ値を設定すると、CAが見つからないというようなエラーが発生します。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+  <footer class="site-footer">
+    <p class="site-info">
+      Shigeki Shoji &copy; 2022. Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://marp.app/">Marp</a>
+    </p>
+  </footer>
+</div>
+</div>
+</body>
+</html>
