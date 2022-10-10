@@ -19,7 +19,7 @@ jobs:
       - name: build node modules
         run: |
           npm i
-          npm run build
+          CHROMIUM_BIN=$(which chrome) npm run build
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
