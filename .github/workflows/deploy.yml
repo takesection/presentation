@@ -27,6 +27,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          role-session-name: samplerolesession
           aws-region: "ap-northeast-3"
       - name: s3 sync 
         run: |
