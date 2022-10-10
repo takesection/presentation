@@ -1,0 +1,30 @@
+name: deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: set up node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: set up chrome
+        uses: browser-actions/setup-chrome@latest
+      - name: build node modules
+        run: |
+          npm i
+          npm run build
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: "ap-northeast-3"
+      - name: s3 sync 
+        run: |
+          aws s3 sync ./docs s3://${{ env.BUCKET_NAME }}/docs
