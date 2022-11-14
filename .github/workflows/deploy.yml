@@ -30,7 +30,6 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           role-session-name: samplerolesession
           aws-region: "ap-northeast-3"
-      - run: echo ${{ steps.credentials.outputs.aws-account-id }}
       - name: s3 sync  
         run: |
           aws s3 sync ./docs s3://${{ secrets.BUCKET_NAME }}/docs
