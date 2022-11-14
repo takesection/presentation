@@ -8,7 +8,8 @@
     "build:webpack": "webpack",
     "build:eleventy": "eleventy",
     "build:social-images": "eleventy-social-images --siteName \"Edward's Blog\" --outputDir src --dataFile build/pages.json",
-    "build": "npm-run-all build:webpack build:eleventy build:social-images build:eleventy"
+    "build": "npm-run-all build:webpack build:eleventy build:social-images build:eleventy",
+    "marp": "marp"
   },
   "repository": {
     "type": "git",
