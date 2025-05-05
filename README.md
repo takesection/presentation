@@ -1,10 +1,6 @@
 静的サイトジェネレーター (Eleventy) を使ったスライドサイトのデモ
 ===
 
-## GitHub Pages を使ったデモサイト
-
-- [https://blog.pigumer.com/](https://blog.pigumer.com/)
-
 ## 静的サイトジェネレーター
 
 静的サイトジェネレーターとして、[11ty](https://www.11ty.dev/) を使用しています。
